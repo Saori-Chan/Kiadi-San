@@ -7,6 +7,6 @@ import javax.servlet.http.*;
 public class Kiadi_SanServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello, world");
+		resp.getWriter().println("Hello, world lol");
 	}
 }
