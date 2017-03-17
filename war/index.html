@@ -1,12 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
-<!-- above set at the top of the file will set     -->
-<!-- the browser's rendering engine into           -->
-<!-- "Quirks Mode". Replacing this declaration     -->
-<!-- with a "Standards Mode" doctype is supported, -->
-<!-- but may lead to some differences in layout.   -->
 
-<html lang="en">
+<html ng-app="appGame">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Kiadi San</title>
@@ -25,26 +19,39 @@
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">  
           
       <!-- Theme CSS -->
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		
+		
+	<script src="/assets/libs/jquery-1.11.2.min.js"></script>
+	<script src="/assets/libs/bootstrap.js"></script>
+	<script src="/assets/libs/jquery.main.js"></script>
+	
+	<script src="/app/app.config.js"></script>
+	<script src="/app/routes.js"></script>
+		
       <link href="css/grayscale.min.css" rel="stylesheet">
   </head>
 
-  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <body>
   
-   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	<header>
+			<nav class="white" role="navigation">
+				<div class="nav-wrapper container">
+					<ul class="right">
+						<li><a href="#/highscores" ng-click="highscore()">Highscores</a></li>
+					</ul>
+				</div>
+				<p>Login or Register with:</p>
 
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        		<a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
+
+			</nav>
+		</header>
+
+		<main>
+			<div ng-view></div>
+</main>
+    
   
   <!-- Header de la page -->
   <header class="intro">
@@ -77,8 +84,20 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>A propos de Kiadi San</h2>
                 <p>Kiadi San est un jeu pour determiner si vous êtes une personne qui est très présente sur le réseau Twitter.</p>
-                <p>Sauriez vous determiner la personne qui a tweeter l'extrait que vous allez voir.</p>
-                <p>Tentez votre chance.</p>
+                <p>Saurez-vous determiner la personne qui a tweeté l'extrait que vous allez voir?</p>
+                <p>Tentez votre chance ! </p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Section Game -->
+    <section id="game" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Envie de lancer une partie ?</h2>
+                <p>Testez donc votre culture ! </p>
+				<button> Cliick here ! </button>
             </div>
         </div>
     </section>
@@ -97,5 +116,11 @@
     <script src="js/grayscale.min.js"></script>
     <script src="js/grayscale.js"></script>
     
+    <!-- Notre JS --> 
+    <script src="signin.js"></script>
+    
+      <footer>
+      	<p style="display: inline-block;">© 2017 Aurore, Nicolas et Bastien</p>
+      </footer>
   </body>
 </html>
