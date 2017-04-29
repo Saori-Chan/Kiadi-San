@@ -1,126 +1,51 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<!DOCTYPE html>
 <html ng-app="appGame">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Kiadi San</title>
-    
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="Appli Web Kiadi San" content="">
-      <meta name="Nicolas & Aurore & Bastien" content="">
-  
-      <!-- Bootstrap Core CSS -->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  
-      <!-- Custom Fonts -->
-      <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-      <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">  
-          
-      <!-- Theme CSS -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		
-		
-	<script src="/assets/libs/jquery-1.11.2.min.js"></script>
-	<script src="/assets/libs/bootstrap.js"></script>
-	<script src="/assets/libs/jquery.main.js"></script>
-	
-	<script src="/app/app.config.js"></script>
-	<script src="/app/routes.js"></script>
-		
-      <link href="css/grayscale.min.css" rel="stylesheet">
-  </head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="author" content="Aurore Sancho, Nicolas Paris et Bastien Restif">
 
-  <body>
-  
-	<header>
+		<title>Kiadi-San</title>
+
+		<!-- CSS  -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> 
+		<link href="css/grayscale.min.css" rel="stylesheet">
+		
+		<!--  Scripts-->
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="/js/grayscale.js"></script>
+		<script src="/js/grayscale.min.js"></script>
+		<script src="/js/app.js"></script>
+		<script src="/js/angular-google-gapi-1.0.1/dist/angular-google-gapi.min.js"></script>
+	</head>
+	
+	<body>
+		<header>
 			<nav class="white" role="navigation">
 				<div class="nav-wrapper container">
 					<ul class="right">
-						<li><a href="#/highscores" ng-click="highscore()">Highscores</a></li>
+						<% if (userService.getCurrentUser() == null) { %>
+							<p><a href="<%= userService.createLoginURL("/") %>">Se connecter</a></p>
+						<% }
+						else { %>
+							<p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
+							<p><a href="<%= userService.createLogoutURL("/") %>">Se déconnecter</a></p>
+						<% } %>
 					</ul>
 				</div>
-				<p>Login or Register with:</p>
-
-        		<a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
-
-			</nav>
+			</nav>			
 		</header>
-
+		
 		<main>
 			<div ng-view></div>
-</main>
-    
-  
-  <!-- Header de la page -->
-  <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Kiadi San</h1>
-                        <table>
-                <tr>
-                  <td colspan="3" style="font-weight:bold;">Available Servlets:</td>        
-                </tr>
-                <tr>
-                  <td><a href="kiadi_san">Kiadi_San</a></td>
-                </tr>
-                <tr>
-                  <td><a href="connexion">SignIn</a></td>
-                </tr>
-              </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    
-    <!-- Section A propos -->
-    <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>A propos de Kiadi San</h2>
-                <p>Kiadi San est un jeu pour determiner si vous êtes une personne qui est très présente sur le réseau Twitter.</p>
-                <p>Saurez-vous determiner la personne qui a tweeté l'extrait que vous allez voir?</p>
-                <p>Tentez votre chance ! </p>
-            </div>
-        </div>
-    </section>
-    
-    
-    <!-- Section Game -->
-    <section id="game" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Envie de lancer une partie ?</h2>
-                <p>Testez donc votre culture ! </p>
-				<button> Cliick here ! </button>
-            </div>
-        </div>
-    </section>
-    
-    
-    <!-- La partie Javascript -->
-    <script src="vendor/jquery/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="js/grayscale.min.js"></script>
-    <script src="js/grayscale.js"></script>
-    
-    <!-- Notre JS --> 
-    <script src="signin.js"></script>
-    
-      <footer>
-      	<p style="display: inline-block;">© 2017 Aurore, Nicolas et Bastien</p>
-      </footer>
-  </body>
+		</main>
+		    
+		    
+		<footer>
+			<p style="display: inline-block;">© 2017 Aurore, Nicolas et Bastien</p>
+		</footer>
+	</body>
 </html>

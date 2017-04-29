@@ -1,0 +1,66 @@
+<div class="section">
+	<div class="container">
+		<br><br>
+		<h1 class="header center teal-text text-lighten-2">Highscore</h1>
+		<div class="card">
+        	<div class="card-content">
+
+				<div class="row">
+					<div class="col s12">
+						<ul class="tabs">
+							<li class="tab col s3 grey lighten-3">
+								<a href="" class="active" ng-click="loadHighscores('all')">All</a>
+							</li>
+							<li class="tab col s3" ng-repeat="category in categories">
+								<a href="" ng-click="loadHighscores(category)">{{category}}</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<table class="highlight" ng-show="selectHighscore">
+							<thead>
+								<tr>
+									<th data-field="place">#</th>
+									<th data-field="pic"></th>
+									<th data-field="id">Name</th>
+									<th data-field="score">Score</th>
+									<th data-field="category" ng-show="highscoreCategory">Category</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="highscore in highscores.hs" class="ng-class: {
+									'green lighten-3': highscores.place == $index+1
+								}">
+									<td>{{$index+1}}</td>
+									<td><img ng-src="{{highscore.pic}}" style="width: 40px; height: 40px;"></td>
+									<td>{{highscore.name}}</td>
+									<td>{{highscore.score}}</td>
+									<td ng-show="highscoreCategory">{{highscore.category}}</td>
+								</tr>
+								<tr ng-show="highscores.place > 10">
+									<td colspan="5" style="text-align: center; font-size: 30px;"><b>...</b></td>
+								</tr>
+								<tr class="green lighten-3" ng-show="highscores.place > 10">
+									<td>{{highscores.place}}</td>
+									<td><img ng-src="{{highscores.s.pic}}" style="width: 40px; height: 40px;"></td>
+									<td>{{highscores.s.name}}</td>
+									<td>{{highscores.s.score}}</td>
+									<td ng-show="highscoreCategory">{{highscores.s.category}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div ng-show="loading">
+					<br/><br/>
+					<div class="progress">
+						<div class="indeterminate"></div>
+					</div>
+					<br/><br>
+				</div>
+			</div>
+		</div>
+		<br><br>
+	</div>
+</div>
+<div class="background b3"></div>
